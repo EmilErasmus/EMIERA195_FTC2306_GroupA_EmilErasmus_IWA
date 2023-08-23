@@ -9,7 +9,7 @@ const logCalc = () => {
     const isNum = typeof calculated === "number";
     const calculatedAsNumber = isNum ? parseInt(calculated) : calculated = 0;
     calculated = calculatedAsNumber + 1;
-}
+};
 
 
 const calcUser = () => {
@@ -17,13 +17,13 @@ const calcUser = () => {
     if (calculated > 2) user = 'John';
     if (calculated > 2) state = 'requesting';
     if (calculated > 3) state = 'idle';
-}
+};
 
 const checkUser = () => {
     if (user && state === 'requesting') {
-        console.log(`User: ${user} (${calculated})`)
-    }
-}
+        console.log(`User: ${user} (${calculated})`);
+    };
+};
 
 // Only allowed to change code above
 
