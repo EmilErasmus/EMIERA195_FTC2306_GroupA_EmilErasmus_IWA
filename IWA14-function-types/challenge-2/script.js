@@ -1,18 +1,14 @@
 
-function add(x, y) {
-    console.log(x + y);
+function add() {
+    return this.internal.a + this.internal.b;
 }
 
-function multiply(x, y) {
-    console.log(x * x * x * x * y);
+function multiply() {
+    return this.internal.a * this.internal.b;
 }
 
 function internal() {
-    if (this.internal.c === 8) {
-        add(this.internal.b, this.internal.c);
-    } else if (this.internal.c === 3) {
-        multiply(this.internal.b, this.internal.c);
-    }
+    console.log(this.add() * this.internal.c)
 }
 
 
@@ -42,3 +38,4 @@ const example2 = {
 
 example1.calculate()
 example2.calculate()
+// console.log(example1.add())
