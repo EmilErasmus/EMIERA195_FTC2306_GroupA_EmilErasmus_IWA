@@ -67,11 +67,11 @@ const data = {
 // Only edit below this comment
 
 const createHtml = (athlete) => {
+    
+    const { firstName, surname, id, races } = athlete;
+    const { date, time } = races[races.length - 1];
 
-    const { firstName, surname, id, races } = athlete
-    const { date, time } = races[races.length - 1]
-
-    const raceDate = new Date(date)
+    const raceDate = new Date(date);
     const day = raceDate.getDate();
     const month = MONTHS[raceDate.getMonth()];
     const year = raceDate.getFullYear();
@@ -91,15 +91,13 @@ const createHtml = (athlete) => {
     const list = document.createElement("dl");
 
     const namesKey = document.createElement("dt");
-    const names = document.createElement("dd");
-
     const raceKey = document.createElement("dt");
-    const numRaces = document.createElement("dd");
-
     const datesKey = document.createElement("dt");
-    const dates = document.createElement("dd");
-
     const timeKey = document.createElement("dt");
+
+    const names = document.createElement("dd");
+    const numRaces = document.createElement("dd");
+    const dates = document.createElement("dd");
     const raceTime = document.createElement("dd");
 
     const dtElements = [namesKey, raceKey, datesKey, timeKey];
@@ -118,7 +116,7 @@ const createHtml = (athlete) => {
     fragment.appendChild(list);
 
     return fragment;
-}
+};
 
 const { NM372 } = data.response.data;
 const { SV782 } = data.response.data;
