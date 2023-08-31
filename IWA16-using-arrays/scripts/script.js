@@ -75,77 +75,53 @@ const createHtml = (athlete) => {
     const day = raceDate.getDate();
     const month = MONTHS[raceDate.getMonth()];
     const year = raceDate.getFullYear();
-    console.log(time)
+
     const [first, second, third, fourth] = time;
-    const total = first + second + third + fourth;
-
-    const hours = Math.floor(total / 60);
-    const minutes = total % 60;
-    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
-
+    const totalTimeInMins = first + second + third + fourth;
+    const hours = Math.floor(totalTimeInMins / 60);
+    const minutes = totalTimeInMins % 60;
+    const format = (num) => num.toString().padStart(2, "0");
+    const formattedTime = `${format(hours)}:${format(minutes)}`;
 
     const fragment = document.createDocumentFragment();
 
     const title = document.createElement("h2");
     title.innerText = id;
-    fragment.appendChild(title);
-
-    // return fragment
-    // for (let i = 0; i < 4; i++){
-    //     const term = document.createElement("dt");
-    //     term.innerText = "Athlete";
-
-    //     const content = document.createElement("dd");
-    //     content.innerText = firstName + surname;
-
-    //     const list = document.createElement("dl");
-    //     list.appendChild(term)
-    //     list.appendChild(content)
-    // }
-    // const raceDate = new Date(date)
-
-    const namesKey = document.createElement("dt");
-    namesKey.innerText = "Athlete:";
-
-    const names = document.createElement("dd");
-    names.innerText = `${firstName} ${surname}:`;
-
-    const raceKey = document.createElement("dt");
-    raceKey.innerText = "Total Races:";
-
-    const numRaces = document.createElement("dd");
-    numRaces.innerText = races.length;
-
-    const datesKey = document.createElement("dt");
-    datesKey.innerText = "Event Date (Latest):";
-
-    const dates = document.createElement("dd");
-    dates.innerText = `${day} ${month} ${year}`;
-
-    const timeKey = document.createElement("dt");
-    timeKey.innerText = "Total Time (Latest):";
-
-    const raceTime = document.createElement("dd");
-    raceTime.innerText = formattedTime;
 
     const list = document.createElement("dl");
-    list.appendChild(namesKey)
-    list.appendChild(names)
-    list.appendChild(raceKey)
-    list.appendChild(numRaces)
-    list.appendChild(datesKey)
-    list.appendChild(dates)
-    list.appendChild(timeKey)
-    list.appendChild(raceTime)
 
+    const namesKey = document.createElement("dt");
+    const names = document.createElement("dd");
+
+    const raceKey = document.createElement("dt");
+    const numRaces = document.createElement("dd");
+
+    const datesKey = document.createElement("dt");
+    const dates = document.createElement("dd");
+
+    const timeKey = document.createElement("dt");
+    const raceTime = document.createElement("dd");
+
+    const dtElements = [namesKey, raceKey, datesKey, timeKey];
+    const dtInner = ["Athlete:", "Total Races:", "Event Date (Latest):", "Total Time (Latest):"];
+    const ddElements = [names, numRaces, dates, raceTime];
+    const ddInner = [`${firstName} ${surname}:`, races.length, `${day} ${month} ${year}`, formattedTime];
+
+    for (let i = 0; i < 4; i++) {
+        dtElements[i].innerText = dtInner[i];
+        list.appendChild(dtElements[i]);
+        ddElements[i].innerText = ddInner[i];
+        list.appendChild(ddElements[i]);
+    };
+
+    fragment.appendChild(title);
     fragment.appendChild(list);
 
-    return fragment
+    return fragment;
 }
 
-
-const { NM372 } = data.response.data
-const { SV782 } = data.response.data
+const { NM372 } = data.response.data;
+const { SV782 } = data.response.data;
 
 document.querySelector('[data-athlete="NM372"]').appendChild(createHtml(NM372));
 document.querySelector('[data-athlete="SV782"]').appendChild(createHtml(SV782));
