@@ -1,8 +1,8 @@
 import { TABLES, COLUMNS, state } from './data.js'
 
 /**
- * Takes any order as an object literal (as saved in state) and converts it a
- * HTML element that can be appended to the DOM. Creating order elements
+ * Takes any order as an object literal (as saved in state) and converts it to
+ * an HTML element that can be appended to the DOM. Creating order elements
  * individually prevents the JavaScript having to re-render the entire DOM every
  * time an new order is created.
  *
@@ -11,7 +11,7 @@ import { TABLES, COLUMNS, state } from './data.js'
  */
 export const createOrderHtml = (order) => {
     const { id, title, table, created } = order
-
+    
     const element = document.createElement('div')
     element.className = 'order'
     element.draggable = true
@@ -43,7 +43,7 @@ export const createOrderHtml = (order) => {
  * Since the tables in use, and their identification can be configured before
  * the start of the app (in data.js), the actual options returned should be
  * dynamically added to the respective "<select>" elements in the HTML after
- * JavaScript loads. This function executes the logic thar reads the current
+ * JavaScript loads. This function executes the logic that reads the current
  * tables and creates the HTML to select them.
  *
  * @returns {HTMLElement}

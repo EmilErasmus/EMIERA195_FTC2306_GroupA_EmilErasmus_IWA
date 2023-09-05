@@ -20,7 +20,7 @@ export const TABLES = [
 ]
 
 /**
- * The different states that an order can be in. This can not be configured
+ * The different states that an order can be in. This cannot be configured
  * before-hand just yet since the app doesn't yet create the HTML dynamically.
  * However there is room to build this functionality out at the future point.
  */
@@ -34,7 +34,7 @@ export const COLUMNS = [
  * The active state of the app expressed as an object literal. This should serve
  * as the single source of truth for the state that the app is in. While it
  * would be easier to save this state in the DOM, it would be much harder to
- * maintain, update and extends since the DOM itself can not be persisted or
+ * maintain, update and extend since the DOM itself can not be persisted or
  * saved in storage (either local or remote).
  */
 export const state = {
